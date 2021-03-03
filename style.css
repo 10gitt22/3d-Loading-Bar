@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: rgb(18,18,18);
+    background: radial-gradient(circle, rgb(0, 13, 15) 0%, rgba(0,0,0,1) 49%);
+}
+
+.tittle-block{
+    width: 210px;
+    height: 50px;
+    font-size: 45px;
+    margin-bottom: 60px;
+    font-weight: 100;
+    color: rgb(194, 194, 194);
+}
+
+.loading{
+    opacity: 0;
+}
+
+.loading:nth-child(1){
+    animation: textBlink 1s linear infinite;
+}
+
+.loading:nth-child(2){
+    animation: textBlink 2s linear infinite;
+}
+
+.loading:nth-child(3){
+    animation: textBlink 3s linear infinite;
+}
+
+.container{
+    width: 600px;
+    height: 60px;
+    perspective: 1000px;
+}
+
+.progressbar{
+    width: 100%;
+    height: inherit;
+    margin: auto;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(0deg);
+}
+
+.side{
+    position: absolute;
+    border: 1px solid rgb(207, 207, 207);
+    text-align: center;
+    width: inherit;
+    color: #fff;
+    font-weight: 500;
+}
+
+.front {
+    transform: translateZ(30px);
+}
+
+.back {
+    transform: rotateY(-180deg) translateZ(30px);
+    height: inherit;
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(30px);
+}
+
+.bottom {
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg) translateZ(30px);
+}
+
+.left {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.74);
+    transform: translateX(-29.5px) rotateY(90deg);
+}
+
+.right {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.74);
+    transform: translateX(-30px) translateZ(30px) rotateY(90deg);
+}
+
+.progress{
+    transform-style: preserve-3d;
+    border: 0;
+    width: 0%;
+    height: 60px;
+    background: rgb(0, 238, 255);
+    background: linear-gradient(90deg, rgb(0, 103, 103) 12%, rgba(0, 187, 187, 0.699) 50%, rgb(0, 103, 103) 100%);
+    background-size: 200% 200%;
+    box-shadow: 0 0 25px -5px rgb(233, 233, 233);
+    animation: LoadingBar 6s linear infinite;
+}
+
+.back .progress{
+    position: absolute;
+    right: 0;
+}
+
+.top .progress{
+    box-shadow: none;
+}
+
+.bottom .progress{
+    transform: rotateY(180deg);
+}
+
+.back .progress, .bottom .progress{
+    box-shadow: 0 0 18px -2px #000 inset;
+}
+
+.button-block{
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    height: 50px;
+    justify-content: space-between;
+    margin-top: 50px;
+    font-size: 25px;
+    font-weight: 100;
+}
+
+#plus, #minus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    color: rgb(194, 194, 194);
+    height: 50px;
+}
+
+.glitch{
+    position: absolute;
+}
+
+#minus:hover, #plus:hover{
+    cursor: pointer;
+    animation: Loading 2.5s infinite;
+}
+
+@media (max-width: 650px){
+    .container{
+        width: 350px;
+    }
+
+    .button-block{
+        width: 80%;
+    }
+}
+
+@media (max-width: 400px){
+    .container{
+        width: 250px;
+    }
+
+    .button-block{
+        width: 100%;
+    }
+}
+
+
+@keyframes textBlink {
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes Loading {
+    0% {
+        opacity: 1;
+      }
+      7% {
+        opacity: 0.75;
+      }
+      10% {
+        opacity: 1;
+        color: rgb(89, 177, 177);
+      }
+      27% {
+        opacity: 1;
+        color: rgb(194, 194, 194);
+      }
+      30% {
+        opacity: 0.75;
+      }
+      35% {
+        opacity: 1;
+      }
+      52% {
+        opacity: 1;
+        color: rgb(89, 177, 177);
+      }
+      55% {
+        opacity: 0.75;
+        color: rgb(194, 194, 194);
+      }
+      50% {
+        opacity: 1;
+      }
+      72% {
+        opacity: 1;
+        color: rgb(89, 177, 177);
+      }
+      75% {
+        opacity: 0.75;
+        color: rgb(194, 194, 194);
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+      }
+}
+
+@keyframes LoadingBar {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: -100% 50%;
+    }
+}
